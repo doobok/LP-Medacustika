@@ -1,1 +1,51 @@
-//
+// 1. Your custom variables and variable overwrites.
+$global-link-color: #ff9100;
+$global-primary-background: #ff7300;
+$global-font-size: 18px;
+$global-font-family: 'Roboto', Helvetica, sans-serif;
+$base-heading-font-family:'Montserrat', Helvetica, sans-serif;
+$base-heading-font-weight: 700;
+$base-heading-color: #555;
+$base-mark-background: #ffd3a9;
+$global-muted-background: #fff0db;
+$padding-large-padding: 80px 30px;
+
+//main button
+$button-default-background: #00C90D;
+$button-default-color: #fff;
+$button-default-hover-background: #26972D;
+$button-default-hover-color: #fff;
+$button-default-active-background: #FF4540;
+$button-default-active-color: #fff;
+$button-large-line-height: 60px;
+$button-large-font-size: 0.9rem;
+$button-large-padding-horizontal: 70px;
+
+//headings
+$heading-small-font-size-m: 2rem;
+$heading-medium-font-size-m: 2.3rem;
+$heading-medium-font-size-l: 2.8rem;
+$heading-large-font-size-m: 2.4rem;
+$heading-large-font-size-l: 3.2rem;
+
+
+// Font Awesome
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/brands';
+
+// $global-font-family: 'PT Sans', sans-serif;
+// $global-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+
+
+
+// 2. Import default variables and available mixins.
+@import "uikit/src/scss/variables-theme.scss";
+@import "uikit/src/scss/mixins-theme.scss";
+
+// 3. Your custom mixin overwrites.
+@mixin hook-card() { color: #000; }
+
+// 4. Import UIkit.
+@import "uikit/src/scss/uikit-theme.scss";
