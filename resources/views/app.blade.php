@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="css/app.css">
 
     </head>
-    <body>      
+    <body>
 
       {{-- шапка --}}
       <div class="uk-background-primary">
@@ -30,12 +30,12 @@
               </div>
               <div class="uk-navbar-right uk-visible@s">
                 <ul class="uk-navbar-nav">
-                    <li>
+                    <li>(044) 227-92-15
+                      {{-- <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star-half-alt"></i>
+                      <i class="fas fa-star-half-alt"></i> --}}
                     </li>
                 </ul>
               </div>

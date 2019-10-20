@@ -12,5 +12,9 @@
 */
 
 Route::get('/', function () {
+    return view('layouts.land.homepage');
+});
+
+Route::get('/1', function () {
     return view('layouts.land.1_land');
 });
