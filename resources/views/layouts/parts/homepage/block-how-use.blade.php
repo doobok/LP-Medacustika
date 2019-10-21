@@ -38,6 +38,8 @@
       @component('components.main-button')
         @slot('id') contacts  @endslot
         @slot('title') хочу консультацию  @endslot
+        @slot('event') Showcontacts  @endslot
+
       @endcomponent
     </div>
 

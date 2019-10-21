@@ -19,6 +19,7 @@
             @component('components.main-button')
               @slot('id') contacts  @endslot
               @slot('title') Получить консультацию  @endslot
+              @slot('event') Showcontacts  @endslot
             @endcomponent
           </div>
 

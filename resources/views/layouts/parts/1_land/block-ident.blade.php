@@ -55,6 +55,7 @@
       @component('components.main-button')
         @slot('id') mail  @endslot
         @slot('title') Скачать список  @endslot
+        @slot('event') ShowgetmailForm  @endslot
       @endcomponent
     </div>
   </div>

@@ -32,6 +32,7 @@
       @component('components.main-button')
         @slot('id') mail  @endslot
         @slot('title') Скачать PDF  @endslot
+        @slot('event') ShowgetmailForm  @endslot
       @endcomponent
     </div>
 

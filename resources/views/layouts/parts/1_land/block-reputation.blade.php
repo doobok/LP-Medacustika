@@ -18,7 +18,8 @@
           <div class="uk-margin-large">
             @component('components.main-button')
               @slot('id') mail  @endslot
-              @slot('title') Скачать чек-лист  @endslot        
+              @slot('title') Скачать чек-лист  @endslot
+              @slot('event') ShowgetmailForm  @endslot
             @endcomponent
           </div>
 
