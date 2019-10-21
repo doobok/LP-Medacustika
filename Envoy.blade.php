@@ -53,8 +53,8 @@
 
   php artisan config:clear
 
-  php artisan migrate
-  php artisan clear-compiled --env=production;
+  {{-- php artisan migrate
+  php artisan clear-compiled --env=production; --}}
 
   echo "#3 - Production dependencies have been instaled"
 @endtask

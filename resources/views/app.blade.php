@@ -8,7 +8,7 @@
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
-        gtag('config', 'UA-30077483-13');
+        gtag('config', '{{env('GOOGLE_A_CODE')}}');
       </script>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
