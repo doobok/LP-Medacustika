@@ -33,7 +33,8 @@
             <div class="uk-navbar-left">
 
                 <a class="uk-logo uk-margin-small uk-margin-small-top" href="#">
-                  <img src="logo_white.png" alt="Medacustika" width="230px">
+                  Медакустика
+                  {{-- <img src="logo_white.png" alt="Medacustika" width="230px"> --}}
                 </a>
 
 
