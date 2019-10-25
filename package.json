@@ -21,6 +21,10 @@
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.11.2",
-        "uikit": "^3.2.1"
+        "inputmask": "^4.0.9",
+        "uikit": "^3.2.1",
+        "vue": "^2.6.10",
+        "vuelidate": "^0.7.4",
+        "vuex": "^3.1.1"
     }
 }

@@ -24,6 +24,7 @@
 
     </head>
     <body>
+      <div id="mapp">
 
       {{-- шапка --}}
       <div class="uk-background-primary">
@@ -42,11 +43,6 @@
               <div class="uk-navbar-right uk-visible@s">
                 <ul class="uk-navbar-nav">
                     <li>(044) 227-92-15
-                      {{-- <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star-half-alt"></i> --}}
                     </li>
                 </ul>
               </div>
@@ -54,8 +50,7 @@
           </div>
         </div>
 
-        @yield('content')
-
+          @yield('content')
 
         {{-- footer --}}
         <div class="uk-background-secondary uk-light">
@@ -69,7 +64,7 @@
           </div>
         </div>
 
-
+      </div>
     </body>
     <script type="text/javascript" src="js/app.js"></script>
 

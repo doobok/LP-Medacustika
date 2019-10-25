@@ -15,6 +15,7 @@
           <li>консультация бесплатно</li>
         </ul>
       </div>
+      <lead-form-phone sourseid="main-promo" button_title="Получить консультацию"></lead-form-phone>
       <div class="uk-margin-large">
         @component('components.main-button')
           @slot('id') contacts  @endslot
