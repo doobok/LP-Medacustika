@@ -1,7 +1,10 @@
 <template>
   <div class="uk-text-center">
-    <p v-if="status">Успешно отправлено!</p>
-    <div v-if="!status">
+    <p v-if="snderror.err">{{snderror.msg}}</p>
+    <template v-if="show">
+      <lead-form-name button_title="Отправить" @gotourl="nextPage"></lead-form-name>
+    </template>
+    <div v-if="!show">
       <div class="uk-margin">
           <input v-model="phone"
           ref="phone"
@@ -19,7 +22,10 @@
       <div class="uk-margin">
         <button
         :disabled="$v.$invalid"
-        class="uk-button uk-button-default uk-button-large uk-form-width-large" type="button" name="button" @click="send">{{button_title}}</button>
+        class="uk-button uk-button-default uk-button-large uk-form-width-large"
+        type="button"
+        name="button"
+        @click="send">{{button_title}}</button>
       </div>
       <p class="uk-text-small uk-text-muted">Ваши данные не будут переданы 3-м лицам</p>
 
@@ -32,20 +38,29 @@ import Inputmask from 'inputmask';
 import { required } from "vuelidate/lib/validators";
 
 export default {
-  props: ['sourseid', 'button_title'],
+  props: ['sourseid', 'button_title', 'redirect_uri'],
   data: function() {
       return {
+        show: false,
         phone: ''
       }
     },
     methods: {
       send() {
           this.$store.dispatch('SEND_LEAD', { phone: this.phoneNum, sourse: this.sourseid });
+          this.show = true;
+          gtag('event', 'sendPhone', {'event_category': this.sourseid, 'event_label': this.button_title }); return true;
+
       },
+      nextPage() {
+        window.location.href= this.redirect_uri;
+
+      }
     },
     computed: {
-      status () {
-            return this.$store.getters.LEAD_SEND_STATUS;
+      snderror () {
+        // console.log(this.$store.getters.LEAD_SEND_ERROR);
+            return this.$store.getters.LEAD_SEND_ERROR;
       },
       phoneNum: function() {
                 var str = this.phone;

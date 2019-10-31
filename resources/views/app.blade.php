@@ -57,7 +57,7 @@
           <hr>
           <div class="uk-container">
             <div class="uk-text-center">
-              <p class="uk-text-muted uk-text-small">Copyright © 2019 Medacustika.UA All Rights Reserved.</p>
+              <p class="uk-text-muted uk-text-small">Copyright © 2019 Medacustika.UA Все права защищены.</p>
 
             </div>
 

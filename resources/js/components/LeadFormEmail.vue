@@ -43,7 +43,7 @@ export default {
     },
     computed: {
       status () {
-            return this.$store.getters.LEAD_SEND_STATUS;
+            return this.$store.getters.LEAD_SEND_ERROR;
           },
     },
     mounted() {

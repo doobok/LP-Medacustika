@@ -12,9 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('layouts.land.homepage');
+    return view('layouts.pages.homepage');
 });
 
 Route::get('/1', function () {
-    return view('layouts.land.1_land');
+    return view('layouts.pages.1-land');
 });
+
+// страницы после...
+Route::get('/phone-wait-call-manager', function () {  return view('layouts.simple-pages.page-after-record-consultation'); });

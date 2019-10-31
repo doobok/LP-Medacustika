@@ -2,33 +2,34 @@ import Axios from 'axios';
 
 export default {
   state: {
-    status: false
+    err: false,
+    msg: ''
   },
   getters: {
-    LEAD_SEND_STATUS (state) {
-      return state.status
+    LEAD_SEND_ERROR (state) {
+      return state
     }
   },
   mutations: {
-    // создание состояния
-    SET_LEADS_STATUS: (state, payload) => {
-      state.status = payload.success;
-      console.log(payload.success);
+    // проверяем на ошибки
+    GET_SEND_ERROR: (state, payload) => {
+      if (payload.success === false) {
+        state.err = true;
+        state.msg = payload.msg;
+      }
     },
-
-
   },
   actions: {
-    // отправка в БД
+    // отправка лида
     SEND_LEAD: async (context, payload) => {
-
-      let {data} = await Axios.post('https://enc4jc335523e.x.pipedream.net', tempyGen(payload));
-      // console.log(data);
-      context.commit('SET_LEADS_STATUS', data);
+      let {data} = await Axios.post('https://medacustika.com.ua/v1/lead-push', tempyGen(payload));
+      context.commit('GET_SEND_ERROR', data);
     },
-
+    // отправка имени лида
+    SEND_LEAD_NAME: async (context, payload) => {
+      let {data} = await Axios.post('https://medacustika.com.ua/v1/lead-name-set', tempyGen(payload));
+    },
   }
-
 }
 
 function tempyGen(payload) {

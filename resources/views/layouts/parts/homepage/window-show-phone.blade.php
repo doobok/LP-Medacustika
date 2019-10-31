@@ -8,36 +8,18 @@
                 <h4 uk-scrollspy="cls: uk-animation-fade; delay: 100"><mark>Осталось совсем немного</mark> </h4>
 
                 <p uk-scrollspy="cls: uk-animation-slide-right-medium; delay: 200">Скоро вы забудете о тех неприятностях, которые вам доставлял плохой слух. Сможете услышать те звуки, о которых уже давно забыли и не надеялись услышать снова. <b>Все реально!</b> </p>
-                <p uk-scrollspy="cls: uk-animation-slide-right-medium; delay: 400">Осталось только сделать несколько простых шагов. Первый из которых - встреча с врачом. <b>Готовы?</b> Позвоните по любому номеру и наш консультант поможет подобрать удобное для вас время приема.</p>
-                <h2 class="uk-heading-large" uk-scrollspy="cls: uk-animation-slide-left-medium; delay: 300">(044) 227-92-15</h2>
-                <h2 class="uk-heading-large" uk-scrollspy="cls: uk-animation-slide-left-medium; delay: 400">(098) 329-05-67</h2>
-                <h2 class="uk-heading-large" uk-scrollspy="cls: uk-animation-slide-left-medium; delay: 500">(095) 463-36-85</h2>
+                <p uk-scrollspy="cls: uk-animation-slide-right-medium; delay: 400">Осталось только сделать несколько простых шагов. Первый из которых - встреча с врачом. <b>Готовы?</b> Оставте контактный номер телефона и наш консультант поможет подобрать удобное для вас время приема.</p>
 
-                <div uk-scrollspy="cls: uk-animation-fade; delay: 3000">
+                <div class="uk-margin-large-top" uk-scrollspy="cls: uk-animation-fade; delay: 600">
 
-                  <p class="uk-margin-large-top">Скажите промокод <mark class="uk-text-danger">ХОЧУ_СЛЫШАТЬ</mark> и получите скидку*</p>
-                  <hr>
-                  <p class="uk-text-muted">*Спешите, срок действия заканчивается через:</p>
-
-                  <div class="uk-grid-small uk-child-width-auto uk-margin" uk-grid uk-countdown="date: 2019-10-27T19:06:29+00:00">
-                      <div>
-                          <div class="uk-heading-small uk-countdown-days"></div>
-                      </div>
-                      <div class="uk-heading-small">:</div>
-                      <div>
-                          <div class="uk-heading-small uk-countdown-hours"></div>
-                      </div>
-                      <div class="uk-heading-small">:</div>
-                      <div>
-                          <div class="uk-heading-small uk-countdown-minutes"></div>
-                      </div>
-                      <div class="uk-heading-small">:</div>
-                      <div>
-                          <div class="uk-heading-small uk-countdown-seconds"></div>
-                      </div>
-                  </div>
+                  <lead-form-phone
+                    sourseid="main-promo"
+                    button_title="Получить консультацию"
+                    redirect_uri="phone-wait-call-manager">
+                  </lead-form-phone>
 
                 </div>
+
             </div>
         </div>
     </div>

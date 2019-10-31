@@ -14,8 +14,7 @@
           <li><span class="uk-text-danger"><b>3 года гарантии</b></span> на все слуховые аппараты</li>
           <li>консультация бесплатно</li>
         </ul>
-      </div>
-      <lead-form-phone sourseid="main-promo" button_title="Получить консультацию"></lead-form-phone>
+      </div>      
       <div class="uk-margin-large">
         @component('components.main-button')
           @slot('id') contacts  @endslot
