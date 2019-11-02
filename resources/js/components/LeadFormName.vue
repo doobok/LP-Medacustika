@@ -1,9 +1,24 @@
 <template>
   <div class="uk-text-center">
     <div>
-      <p v-if="!oldname">Подскажите, пожалуйста, как мы можем к Вам обращаться</p>
-      <p v-if="oldname">Похоже что мы уже знакомы. Вас зовут -</p>
-      <div class="uk-margin">
+      <template v-if="formshow" id="prev-info">
+        <p v-if="!oldname">Подскажите, пожалуйста, как мы можем к Вам обращаться</p>
+        <p v-if="oldname">Похоже что мы уже знакомы. Вас зовут -</p>
+      </template>
+      <div v-if="errorshow" class="uk-alert-danger" uk-alert>
+          <p>{{error}}</p>
+      </div>
+      <template v-if="loading" id="loading">
+        <div class="bubblingG">
+        	<span id="bubblingG_1">
+        	</span>
+        	<span id="bubblingG_2">
+        	</span>
+        	<span id="bubblingG_3">
+        	</span>
+        </div>
+      </template>
+      <div v-show="formshow" class="uk-margin">
           <input v-model="name"
           ref="name"
           name="name"
@@ -24,7 +39,7 @@
           </p>
         </transition>
       </div>
-      <div class="uk-margin">
+      <div v-if="formshow" class="uk-margin">
         <button
         :disabled="$v.$invalid"
         class="uk-button uk-button-default uk-button-large uk-form-width-large" type="button" name="button" @click="send">
@@ -48,23 +63,39 @@ export default {
   props: ['button_title'],
   data: function() {
       return {
+        loading: false,
+        formshow: true,
+        errorshow: false,
+        error: '',
         oldname: false,
         name: ''
       }
     },
     methods: {
       send() {
-          this.$store.dispatch('SEND_LEAD_NAME', { name: this.name });
+          this.formshow = false;
+          this.loading = true;
 
-          // сохраняем в браузер имя пользователя
-          const parsed = JSON.stringify(this.name);
-          localStorage.setItem('name', parsed);
+          this.$store.dispatch('SEND_LEAD_NAME', { name: this.name }).then((res) => {
+            if (res.success) {
+              this.loading = false;
+              // сохраняем в браузер имя пользователя
+              const parsed = JSON.stringify(this.name);
+              localStorage.setItem('name', parsed);
+              // передаем событие в GA
+              gtag('event', 'sendName', {'event_category': 'Button', 'event_label': this.button_title});
+              // вызываем переадресацию на следущую страницу
+              this.$emit('gotourl');
+              // console.log(res);
 
-          // передаем событие в GA
-          gtag('event', 'sendName', {'event_category': 'Button', 'event_label': this.button_title});
+            } else {
+              this.loading = false;
+              this.errorshow = true;
+              this.error = 'Возникла ошибка. Данные не удалось отправить. Попробуйте повторить попытку немного позже.';
+              // console.log(res);
+            }
+          });
 
-          // вызываем переадресацию на следущую страницу
-          this.$emit('gotourl');
       },
     },
     mounted() {

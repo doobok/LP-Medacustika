@@ -2,33 +2,39 @@ import Axios from 'axios';
 
 export default {
   state: {
-    err: false,
-    msg: ''
   },
   getters: {
-    LEAD_SEND_ERROR (state) {
-      return state
-    }
   },
   mutations: {
-    // проверяем на ошибки
-    GET_SEND_ERROR: (state, payload) => {
-      if (payload.success === false) {
-        state.err = true;
-        state.msg = payload.msg;
-      }
-    },
   },
   actions: {
+
     // отправка лида
-    SEND_LEAD: async (context, payload) => {
-      let {data} = await Axios.post('https://medacustika.com.ua/v1/lead-push', tempyGen(payload));
-      context.commit('GET_SEND_ERROR', data);
+    SEND_LEAD : (context, payload) => {
+      return Axios.post('https://medacustika.com.ua/api/v1/lead-push', tempyGen(payload))
+      .then((response) => {
+        // какоето действие из состоянием (оставил на будущее)
+        // if (response.success === true) {
+        //   context.commit('SOME_MUTATOR', response.data);
+        // }
+        return response.data
+      })
+      .catch(error => {
+        return error;
+      });
     },
+
     // отправка имени лида
-    SEND_LEAD_NAME: async (context, payload) => {
-      let {data} = await Axios.post('https://medacustika.com.ua/v1/lead-name-set', tempyGen(payload));
+    SEND_LEAD_NAME : (context, payload) => {
+      return Axios.post('https://medacustika.com.ua/api/v1/lead-name-set', tempyGen(payload))
+      .then((response) => {
+        return response.data
+      })
+      .catch(error => {
+        return error;
+      });
     },
+
   }
 }
 

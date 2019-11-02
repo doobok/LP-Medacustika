@@ -1,10 +1,22 @@
 <template>
   <div class="uk-text-center">
-    <p v-if="snderror.err">{{snderror.msg}}</p>
-    <template v-if="show">
+    <div v-if="errorshow" class="uk-alert-danger" uk-alert>
+        <p>{{error}}</p>
+    </div>
+    <template v-if="loading" id="loading">
+      <div class="bubblingG">
+      	<span id="bubblingG_1">
+      	</span>
+      	<span id="bubblingG_2">
+      	</span>
+      	<span id="bubblingG_3">
+      	</span>
+      </div>
+    </template>
+    <template v-if="subformshow">
       <lead-form-name button_title="Отправить" @gotourl="nextPage"></lead-form-name>
     </template>
-    <div v-if="!show">
+    <div v-show="formshow">
       <div class="uk-margin">
           <input v-model="phone"
           ref="phone"
@@ -41,15 +53,45 @@ export default {
   props: ['sourseid', 'button_title', 'redirect_uri'],
   data: function() {
       return {
-        show: false,
+        loading: false,
+        formshow: true,
+        subformshow: false,
+        errorshow: false,
+        error: '',
         phone: ''
       }
     },
     methods: {
       send() {
-          this.$store.dispatch('SEND_LEAD', { phone: this.phoneNum, sourse: this.sourseid });
-          this.show = true;
-          gtag('event', 'sendPhone', {'event_category': this.sourseid, 'event_label': this.button_title }); return true;
+        this.formshow = false;
+        this.loading = true;
+
+        this.$store.dispatch('SEND_LEAD', { phone: this.phoneNum, sourse: this.sourseid }).then((res) => {
+          // проверяем наличие служебного сообщения из сервера
+          if (res.msg) {
+            this.loading = false;
+            this.errorshow = true;
+            this.error = res.msg;
+            // console.log(res);
+
+          // проверяем облаботал ли сервер запрос
+          } else if (res.success) {
+            this.loading = false;
+            this.subformshow = true;
+            // console.log(res);
+
+            // вызываем событие GA
+            gtag('event', 'sendPhone', {'event_category': this.sourseid, 'event_label': this.button_title }); return true;
+
+          // в противном случае показываем сообщение об ошибке
+          } else {
+            this.loading = false;
+            this.formshow = true;
+            this.errorshow = true;
+            this.error = 'Возникла ошибка. Данные не удалось отправить. Попробуйте повторить попытку немного позже.';
+            // console.log(res);
+          }
+        })
 
       },
       nextPage() {
@@ -58,10 +100,6 @@ export default {
       }
     },
     computed: {
-      snderror () {
-        // console.log(this.$store.getters.LEAD_SEND_ERROR);
-            return this.$store.getters.LEAD_SEND_ERROR;
-      },
       phoneNum: function() {
                 var str = this.phone;
                 str = str.replace(/[^0-9.]/g, '');
