@@ -30,7 +30,7 @@ import Inputmask from 'inputmask';
 import { required, email } from "vuelidate/lib/validators";
 
 export default {
-  props: ['sourseid', 'button_title'],
+  props: ['sourceid', 'button_title'],
   data: function() {
       return {
         email: ''
@@ -38,7 +38,7 @@ export default {
     },
     methods: {
       send() {
-          this.$store.dispatch('SEND_LEAD', { email: this.email, sourse: this.sourseid });
+          this.$store.dispatch('SEND_LEAD', { email: this.email, source: this.sourceid });
       },
     },
     computed: {

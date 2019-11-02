@@ -13,7 +13,7 @@
                 <div class="uk-margin-large-top" uk-scrollspy="cls: uk-animation-fade; delay: 600">
 
                   <lead-form-phone
-                    sourseid="main-promo"
+                    sourceid="main-promo"
                     button_title="Получить консультацию"
                     redirect_uri="phone-wait-call-manager">
                   </lead-form-phone>

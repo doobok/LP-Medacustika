@@ -50,7 +50,7 @@ import Inputmask from 'inputmask';
 import { required } from "vuelidate/lib/validators";
 
 export default {
-  props: ['sourseid', 'button_title', 'redirect_uri'],
+  props: ['sourceid', 'button_title', 'redirect_uri'],
   data: function() {
       return {
         loading: false,
@@ -66,7 +66,7 @@ export default {
         this.formshow = false;
         this.loading = true;
 
-        this.$store.dispatch('SEND_LEAD', { phone: this.phoneNum, sourse: this.sourseid }).then((res) => {
+        this.$store.dispatch('SEND_LEAD', { phone: this.phoneNum, source: this.sourceid }).then((res) => {
           // проверяем наличие служебного сообщения из сервера
           if (res.msg) {
             this.loading = false;
@@ -81,7 +81,7 @@ export default {
             // console.log(res);
 
             // вызываем событие GA
-            gtag('event', 'sendPhone', {'event_category': this.sourseid, 'event_label': this.button_title }); return true;
+            gtag('event', 'sendPhone', {'event_category': this.sourceid, 'event_label': this.button_title }); return true;
 
           // в противном случае показываем сообщение об ошибке
           } else {
